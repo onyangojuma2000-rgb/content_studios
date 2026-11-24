@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Studio | Content Pipeline</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">C</span> Content Studio</a>
+  <span class="top-label">AI CONTENT WORKSPACE</span>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="eyebrow">ONE INPUT. A COMPLETE CONTENT PACKAGE.</div>
+    <h1>Turn ideas into<br><span>ready-to-edit content.</span></h1>
+    <p>Give us a topic or a webpage. Generate a blog post, five social posts for X, and a LinkedIn post in one workflow.</p>
+  </section>
+
+  <section class="workspace">
+    <div class="panel input-panel">
+      <div class="section-heading"><span class="step">01</span><div><h2>Your source</h2><p>Start with a topic or an article URL.</p></div></div>
+      <div class="toggle" role="group" aria-label="Input type">
+        <button type="button" class="toggle-btn active" data-source="topic">Topic</button>
+        <button type="button" class="toggle-btn" data-source="url">Website URL</button>
+      </div>
+      <label for="sourceValue" id="sourceLabel">What should we create content about?</label>
+      <textarea id="sourceValue" rows="5" placeholder="e.g. How Nairobi small businesses can use WhatsApp to improve customer service"></textarea>
+      <div class="field-grid">
+        <div><label for="audience">Target audience</label><input id="audience" maxlength="180" value="Small business owners and general readers"></div>
+        <div><label for="tone">Writing tone</label>
+          <select id="tone"><option>Professional and engaging</option><option>Friendly and conversational</option><option>Informative and educational</option><option>Persuasive and sales-focused</option><option>Simple and direct</option></select>
+        </div>
+      </div>
+      <button id="generateBtn" class="primary-btn"><span>Generate content package</span><span aria-hidden="true">→</span></button>
+      <p class="microcopy">AI-generated drafts should be reviewed for accuracy and brand voice before publishing.</p>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="panel output-panel">
+      <div class="section-heading"><span class="step">02</span><div><h2>Your content package</h2><p>Generated content appears here for review and copying.</p></div></div>
+      <div id="emptyState" class="empty-state"><div class="empty-icon">✦</div><h3>Your next content campaign starts here.</h3><p>Enter a topic or URL and generate your first package.</p></div>
+      <div id="results" class="results hidden">
+        <div class="result-tabs" role="tablist">
+          <button class="tab active" data-tab="blog">Blog post</button>
+          <button class="tab" data-tab="tweets">5 X posts</button>
+          <button class="tab" data-tab="linkedin">LinkedIn</button>
+        </div>
+        <section id="blogTab" class="result-section">
+          <div class="result-actions"><span class="content-label">BLOG ARTICLE</span><button class="copy-btn" data-copy="blog">Copy blog</button></div>
+          <h2 id="blogTitle"></h2><p id="metaDescription" class="meta"></p><article id="blogBody" class="markdown-content"></article>
+        </section>
+        <section id="tweetsTab" class="result-section hidden">
+          <div class="result-actions"><span class="content-label">X / TWITTER POSTS</span><button class="copy-btn" data-copy="tweets">Copy all 5</button></div>
+          <div id="tweetsList" class="post-list"></div>
+        </section>
+        <section id="linkedinTab" class="result-section hidden">
+          <div class="result-actions"><span class="content-label">LINKEDIN POST</span><button class="copy-btn" data-copy="linkedin">Copy post</button></div>
+          <div id="linkedinBody" class="social-copy"></div>
+        </section>
+        <p id="sourceNote" class="source-note"></p>
+      </div>
+    </div>
+  </section>
+  <footer>CONTENT STUDIO <span>•</span> Built for consistent, thoughtful content production</footer>
+</main>
+<script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>
